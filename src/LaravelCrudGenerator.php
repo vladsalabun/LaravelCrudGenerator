@@ -2,6 +2,8 @@
 
 namespace Salabun;
 
+user Salabun\DataSets\WebRoutes;
+
 /**
  *  Генератор крудів:
  */
@@ -10,10 +12,11 @@ class LaravelCrudGenerator
 	public function __construct($project) 
 	{
 		$this->project = $project;
+		$this->webRoutes = new WebRoutes;
 	}
     
     
-	public function generateRoutes(); 
+	public function generateRoutes()
 	{
 		// TODO: 
         // взяти всі сутності
@@ -21,17 +24,17 @@ class LaravelCrudGenerator
         // які потрібні апі-роути? назви
 	}
     
-    public function generateViews(); 
+    public function generateViews()
 	{
 		// TODO:
 	}
     
-    public function generateModels(); 
+    public function generateModels()
 	{
 		// TODO:
 	}
     
-    public function generateControllers(); 
+    public function generateControllers()
 	{
 		// TODO:
 	}
