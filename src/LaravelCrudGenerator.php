@@ -2,7 +2,7 @@
 
 namespace Salabun;
 
-user Salabun\DataSets\WebRoutes;
+use Salabun\DataSets\WebRoutes;
 
 /**
  *  Генератор крудів:

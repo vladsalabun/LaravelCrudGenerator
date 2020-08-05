@@ -16,32 +16,32 @@ class WebRoutes
             // GET:
             [
                 'type' =>'get',
-                'name' =>''
+                'name' =>'',
                 'method' => 'list', 
             ],
             [
                 'type' =>'get',
-                'name' =>'/add'
+                'name' =>'/add',
                 'method' => 'add', 
             ],
             [
                 'type' =>'get',
-                'name' =>'/edit/{id}'
+                'name' =>'/edit/{id}',
                 'method' => 'read', 
             ],
             
             // POST:
             [
                 'type' =>'post',
-                'name' =>'/add'
+                'name' =>'/add',
                 'method' => 'create', 
             ],
             [
                 'type' =>'post',
-                'name' =>'/edit'
+                'name' =>'/edit',
                 'method' => 'update', 
             ],
-        ]
+        ];
         
     }
 
