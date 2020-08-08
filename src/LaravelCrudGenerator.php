@@ -3,15 +3,18 @@
 namespace Salabun;
 
 use Salabun\DataSets\WebRoutes;
+use Salabun\DB\MySQLParser;
 
 /**
  *  Генератор крудів:
  */
 class LaravelCrudGenerator 
 {
-	public function __construct($project) 
+	protected $project = [];
+	protected $driver = 'MySQL';
+    
+    public function __construct() 
 	{
-		$this->project = $project;
 		$this->webRoutes = new WebRoutes;
 	}
     
@@ -37,5 +40,16 @@ class LaravelCrudGenerator
     public function generateControllers()
 	{
 		// TODO:
+	}
+    
+    /** 
+     *  Визначити драйвер бази даних:
+     */
+    public function driver($driver = 'MySQL')
+	{
+		if($driver == 'MySQL') {
+            $this->driver = new MySQLParser;
+        }
+        return $this->driver;
 	}
 }
