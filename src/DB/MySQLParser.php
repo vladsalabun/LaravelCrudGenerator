@@ -41,6 +41,9 @@ class MySQLParser
         return $this;  
     }
 
+    /**
+     *  Підключення до бази даних MYSQL:
+     */
 	public function connect() 
 	{
 		$connect = mysqli_connect($this->host, $this->login, $this->password, $this->database);
@@ -53,6 +56,9 @@ class MySQLParser
         }
     }
     
+    /**
+     *  Отримати назви всіх таблиці:
+     */
 	public function getTables() 
 	{
         $this->tables = [];
@@ -66,6 +72,9 @@ class MySQLParser
         return $this;
     }
     
+    /**
+     *  Отримати назви і параметри полів таблиць:
+     */
 	public function getFields() 
 	{
         if(count($this->tables) > 0) {

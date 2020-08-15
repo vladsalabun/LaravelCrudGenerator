@@ -3,6 +3,7 @@
 namespace Salabun;
 
 use Salabun\DataSets\WebRoutes;
+use Salabun\DataSets\DefaultFieldsParam;
 use Salabun\DB\MySQLParser;
 
 /**
@@ -13,9 +14,17 @@ class LaravelCrudGenerator
 	protected $project = [];
 	protected $driver = 'MySQL';
     
+    /**
+     *  Скомпільований проект
+     *
+     *  @var array
+     */
+	protected $compiled;
+    
     public function __construct() 
 	{
 		$this->webRoutes = new WebRoutes;
+		$this->defaultFieldsParam = new DefaultFieldsParam;
 	}
     
     
@@ -40,6 +49,8 @@ class LaravelCrudGenerator
     public function generateControllers()
 	{
 		// TODO:
+        
+        //
 	}
     
     /** 
@@ -52,4 +63,5 @@ class LaravelCrudGenerator
         }
         return $this->driver;
 	}
+    
 }
