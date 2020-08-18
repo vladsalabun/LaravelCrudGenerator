@@ -2,6 +2,8 @@
 
 namespace Salabun\Views;
 
+use Salabun\CodeWriter;
+
 /**
  *  Секції видів:
  */
@@ -15,6 +17,20 @@ class ViewSectionController
         $this->xl = 6;
         
         $this->items = [];
+    }
+   
+    /**
+     *  Задаю ширину всіх стопців:
+     */
+	public function cols($array) 
+	{
+        $this
+            ->sm($array[0])
+            ->md($array[1])
+            ->lg($array[2])
+            ->xl($array[3]);
+        
+        return $this;
     }
    
 	public function sm($col) 
@@ -49,18 +65,28 @@ class ViewSectionController
     
 	public function getHTML() 
 	{
-        $string = '<!--- Begin section: --->' . PHP_EOL;
-        $string .= '<div class="col-sm-'.$this->sm.' col-md-'.$this->md.' col-lg-'.$this->lg.' col-xl-'.$this->xl.'">' . PHP_EOL;
+        // Створюю новий обєкт генератора коду:
+        $this->codeWriter = new CodeWriter;
         
+        $this->codeWriter
+            ->line('<!--- Begin bootstrap section: --->')
+            ->line('<div class="col-sm-'.$this->sm.' col-md-'.$this->md.' col-lg-'.$this->lg.' col-xl-'.$this->xl.'">')
+            ->br()
+            ->defaultSpaces(4);
+
+        // Розбиваю вхідні дані по рядках додаю у секцію:    
         foreach($this->items as $item) {
-            $string .= PHP_EOL . $item . PHP_EOL;
+            $this->codeWriter
+                ->lines(explode(PHP_EOL, $item))
+                ->br();
         }
         
+        $this->codeWriter
+            ->defaultSpaces(0)
+            ->line('</div>')
+            ->line('<!--- /End bootstrap section --->');
         
-        $string .= PHP_EOL . '</div>' . PHP_EOL;
-        $string .= '<!--- /End section --->' . PHP_EOL;
-        
-        return $string;
+        return $this->codeWriter->getCode();
     }
     
     

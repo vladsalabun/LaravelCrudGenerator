@@ -24,7 +24,6 @@ class LaravelCrudGenerator
     public function __construct() 
 	{
 		$this->webRoutes = new WebRoutes;
-		$this->defaultFieldsParam = new DefaultFieldsParam;
 	}
     
     
